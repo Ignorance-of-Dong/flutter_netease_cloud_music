@@ -2,10 +2,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import '../view//Boot/bootScreen.dart';
 import '../view/Home/homeSreen.dart';
-// import '../pages/sarch/search_screen.dart';
-// import '../newPages/homepage/home_page_screen.dart';
-// import '../newPages/songListDetails/song_list_details.dart';
-// import '../newPages/musicPlayerStart/music_player_start.dart';
+import '../view/Layout/layoutScreen.dart';
+import '../view/Login/loginScreen.dart';
 
 
 
@@ -22,6 +20,20 @@ var homeHandler = new Handler(
     print(params);
     // Application.router.navigateTo(context, path)
     return new HomeScreen();
+  }
+);
+var layoutHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print(params);
+    // Application.router.navigateTo(context, path)
+    return new LayoutScreen();
+  }
+);
+var loginHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print(params);
+    // Application.router.navigateTo(context, path)
+    return new LoginScreen();
   }
 );
 
