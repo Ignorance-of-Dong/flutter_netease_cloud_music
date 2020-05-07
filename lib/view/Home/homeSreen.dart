@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 14:15:35
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-04-26 18:25:11
+ * @LastEditTime: 2020-04-29 17:10:15
  * @Descripttion: App首页（登录 + 游客入口）
  */
 import 'package:cloudmusic/routes/navigatorUtil.dart';
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen>
                             child: Container(
                               width: 80.0,
                               height: 80.0,
-                              color: Colors.yellow,
+                              color: Colors.red,
                               child: Image.network(
                                 //网络图片
                                 'http://music.ignorantscholar.cn/images/e0603518b18c6f6eaa378ad19773fd23.png',

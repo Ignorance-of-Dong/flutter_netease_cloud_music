@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-24 19:03:38
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-04-26 18:25:30
+ * @LastEditTime: 2020-04-29 18:01:56
  * @Descripttion: 水波纹按钮
  */
 import 'package:flutter/material.dart';
@@ -68,8 +68,6 @@ class _GradientButtonState extends State<GradientButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0,
-      height: 30.0,
       decoration: BoxDecoration(
         border: Border.all(color: borderColor, width: 1),
         color: contextcolor,

@@ -7,7 +7,8 @@ import '../view/Login/loginScreen.dart';
 
 
 
-// 路由模块获取，以及获取传递参数
+// 路由模块获取，以及获取传递参
+// 初始广告页
 var bootHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print(params);
@@ -15,6 +16,8 @@ var bootHandler = new Handler(
     return new BootScreen();
   }
 );
+
+// 选择登录方式首页
 var homeHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print(params);
@@ -22,6 +25,8 @@ var homeHandler = new Handler(
     return new HomeScreen();
   }
 );
+
+// 页面首页
 var layoutHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print(params);
@@ -29,6 +34,8 @@ var layoutHandler = new Handler(
     return new LayoutScreen();
   }
 );
+
+// 登录页
 var loginHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print(params);
