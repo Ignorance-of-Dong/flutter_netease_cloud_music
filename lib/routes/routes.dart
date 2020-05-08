@@ -18,6 +18,7 @@ class Routes {
     // router.define('/detail', handler: bootHandler);
     router.define('/home', handler: homeHandler);
     router.define('/layout', handler: layoutHandler);
-    router.define('/login', handler: loginHandler);
+    router.define('/tel', handler: telHandler);
+    router.define('/pwd', handler: pwdHandler);
   }
 }

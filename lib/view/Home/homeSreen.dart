@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 14:15:35
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-04-29 17:10:15
+ * @LastEditTime: 2020-05-07 11:11:04
  * @Descripttion: App首页（登录 + 游客入口）
  */
 import 'package:cloudmusic/routes/navigatorUtil.dart';
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 print("触发事件");
                                 Histroy().push(
                                   context: context,
-                                  path: '/login',
+                                  path: '/tel',
                                 );
                               },
                               contextcolor: Colors.white,

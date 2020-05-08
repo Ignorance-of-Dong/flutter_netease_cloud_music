@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../view//Boot/bootScreen.dart';
 import '../view/Home/homeSreen.dart';
 import '../view/Layout/layoutScreen.dart';
-import '../view/Login/loginScreen.dart';
+import '../view/Login/telScreen.dart';
+import '../view/Login/pwdScreen.dart';
 
 
 
@@ -35,15 +36,23 @@ var layoutHandler = new Handler(
   }
 );
 
-// 登录页
-var loginHandler = new Handler(
+// 登录页 => 手机号
+var telHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     print(params);
     // Application.router.navigateTo(context, path)
-    return new LoginScreen();
+    return new TelScreen();
   }
 );
 
+// 登录页 => 密码
+var pwdHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    print(params);
+    // Application.router.navigateTo(context, path)
+    return new PwdScreen(phoneMobile: params['phoneMobile'][0],);
+  }
+);
 
 
 // var webViewHandler = new Handler(
