@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-26 14:14:40
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-08 14:29:37
+ * @LastEditTime: 2020-05-09 11:12:39
  * @Descripttion: 首页布局 + 侧边栏
  */
 
@@ -11,6 +11,12 @@ import 'package:cloudmusic/utils/lcfarmSize.dart';
 import 'package:toast/toast.dart';
 import '../sidebar/SidebarScreen.dart';
 import 'package:flutter/services.dart';
+import '../LayoutTabList/findScreen.dart';
+import '../LayoutTabList/userScreen.dart';
+import '../LayoutTabList/yunCunScreen.dart';
+import '../LayoutTabList/videoScreen.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+
 
 class LayoutScreen extends StatefulWidget {
   @override
@@ -19,8 +25,19 @@ class LayoutScreen extends StatefulWidget {
 
 class _LayoutScreenState extends State<LayoutScreen> {
   int tabIndex = 1;
+  List<Widget> tabListContainer = List();
   List tabBarListData = ["我的", "发现", "云村", "视频"];
   DateTime lastPopTime; //上次点击时间
+
+  @override
+  void initState() {
+    tabListContainer
+    ..add(UserScreen())
+    ..add(FindScreen())
+    ..add(YunCunScreen())
+    ..add(VideoScreen());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     LcfarmSize.getInstance().init(context);
@@ -111,9 +128,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 100.0,
-                    // color: Colors.red,
+                    width: MediaQuery.of(context).size.width * 4,
+                    color: Colors.red,
+                    child: tabListContainer[tabIndex]
                   ),
                 )
               ],

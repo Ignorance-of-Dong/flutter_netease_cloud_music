@@ -28,6 +28,8 @@ dependencies:
 
   fluro: "^1.5.1"
 
+  flutter_swiper: "^1.1.6"
+
   toast: ^0.1.5
 
   dio: ^2.2.2
