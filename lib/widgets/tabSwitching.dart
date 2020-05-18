@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-05-08 18:02:58
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-09 16:18:50
+ * @LastEditTime: 2020-05-11 10:36:28
  * @Descripttion: tab切换组件 == === == = == == = 仿tabbar切换动画 -==== 构思中
  */
 import "package:flutter/material.dart";
@@ -35,17 +35,18 @@ class _TabSwitchingState extends State<TabSwitching> with TickerProviderStateMix
       // 创建 AnimationController，用于控制动画
       // 必须提供动画时间
       context = widget.context ?? this.context;
-      animationController = new AnimationController(vsync: this,duration: Duration(milliseconds: 1500));
+      
       // 创建一个插值器，关联 AnimationController，返回一个新的 Animation 对象
-      runAnimation(MediaQuery.of(context).size.width, 0, 0);
+      runAnimation(MediaQuery.of(context).size.width, 0.0, 0.0);
   }
 
   runAnimation(screenWid, start, end) {
-    print(start);
+    print(screenWid * end);
     // 0, 1
     // 1, 2
     // 2, 1
-    animation = Tween<double>(begin: screenWid * start, end: start * end).animate(animationController);
+    animationController = new AnimationController(vsync: this,duration: Duration(milliseconds: 200));
+    animation = Tween<double>(begin: screenWid * start, end: screenWid * end).animate(animationController);
 
       animationController.addListener((){
         print("正在执行动画化");
@@ -64,17 +65,26 @@ class _TabSwitchingState extends State<TabSwitching> with TickerProviderStateMix
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Container(
+              child: SizedBox(
                 width: MediaQuery.of(context).size.width * 2,
-                color: Colors.lightBlue,
-                margin: EdgeInsets.only(right: animation.value),
+                child: Container(
+                  margin: EdgeInsets.only(right: animation.value),
+                  color: Colors.lightBlue,
+                ),
               )
             ),
             GradientButton(
               context: context, 
               text: "hahah",
               handelClick: () {
-                runAnimation(MediaQuery.of(context).size.width, 0, 1);
+                runAnimation(MediaQuery.of(context).size.width, 0.0, 1.0);
+              }
+            ),
+            GradientButton(
+              context: context, 
+              text: "fanhui",
+              handelClick: () {
+                runAnimation(MediaQuery.of(context).size.width, 1.0, 0.0);
               }
             )
           ],
