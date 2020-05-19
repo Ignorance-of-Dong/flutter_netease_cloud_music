@@ -1,0 +1,184 @@
+{
+  "id": "1825998",
+  "name": "Flutter_Cloud_Music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "753908",
+      "name": "铃铛",
+      "font_class": "lingdang",
+      "unicode": "e717",
+      "unicode_decimal": 59159
+    },
+    {
+      "icon_id": "1002349",
+      "name": "扫一扫",
+      "font_class": "552dc065f0478",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1629893",
+      "name": "闹钟",
+      "font_class": "icon-test",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "1771748",
+      "name": "麦克",
+      "font_class": "mic",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1984397",
+      "name": "换肤",
+      "font_class": "huanfu",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "2545233",
+      "name": "用户",
+      "font_class": "user",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3662545",
+      "name": "票",
+      "font_class": "piao",
+      "unicode": "e75e",
+      "unicode_decimal": 59230
+    },
+    {
+      "icon_id": "4043377",
+      "name": "闹钟",
+      "font_class": "clock",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "5133184",
+      "name": "收 藏",
+      "font_class": "favorite",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "6118272",
+      "name": "附近",
+      "font_class": "fujin1",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
+      "icon_id": "6997307",
+      "name": "定时",
+      "font_class": "dingshi",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "9215864",
+      "name": "信",
+      "font_class": "xin",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "435934",
+      "name": "排行榜",
+      "font_class": "paixingbang",
+      "unicode": "e7bd",
+      "unicode_decimal": 59325
+    },
+    {
+      "icon_id": "821791",
+      "name": "直播",
+      "font_class": "zhibo",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "1956095",
+      "name": "电台",
+      "font_class": "diantai",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "2357757",
+      "name": "排行榜",
+      "font_class": "paihangbang",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "2529730",
+      "name": "电台",
+      "font_class": "ziyuan",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "3684227",
+      "name": "电台",
+      "font_class": "diantai1",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4002523",
+      "name": "排行榜",
+      "font_class": "paihangbangxuanzhong",
+      "unicode": "e7e5",
+      "unicode_decimal": 59365
+    },
+    {
+      "icon_id": "6525418",
+      "name": "排行榜",
+      "font_class": "paihangbang1",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "7059047",
+      "name": "日历",
+      "font_class": "rili",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "7202674",
+      "name": "日历",
+      "font_class": "rili1",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "10180793",
+      "name": "歌单",
+      "font_class": "gedan",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "10510393",
+      "name": "直播",
+      "font_class": "zhibo1",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "11391498",
+      "name": "歌单",
+      "font_class": "gedan1",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    }
+  ]
+}

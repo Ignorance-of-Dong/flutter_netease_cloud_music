@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-26 14:14:40
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-11 11:59:01
+ * @LastEditTime: 2020-05-18 11:30:52
  * @Descripttion: 首页布局 + 侧边栏
  */
 
@@ -15,8 +15,6 @@ import '../LayoutTabList/findScreen.dart';
 import '../LayoutTabList/userScreen.dart';
 import '../LayoutTabList/yunCunScreen.dart';
 import '../LayoutTabList/videoScreen.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-
 
 class LayoutScreen extends StatefulWidget {
   @override
@@ -52,6 +50,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 return buildOpenDraw(context);
               },
             ),
+            elevation: 0,
             backgroundColor: Colors.white,
             title: Container(
               child: TabBar(
@@ -84,7 +83,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                     flex: 1,
                     child: Container(
                       width: MediaQuery.of(context).size.width * 4,
-                      color: Colors.red,
                       child: TabBarView(
                         physics: new NeverScrollableScrollPhysics(),
                         children: <Widget>[
