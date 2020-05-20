@@ -1,3 +1,10 @@
+/*
+ * @Author: zhangzheng
+ * @Date: 2020-04-17 13:56:25
+ * @LastEditors: zhangzheng
+ * @LastEditTime: 2020-05-19 13:55:42
+ * @Descripttion: 
+ */ 
 // import 'dart:async';
 import 'package:flutter/material.dart';
 // import 'dart:convert';
@@ -5,11 +12,11 @@ import '../server/request.dart';
 
 class NetWorkList{
   /// 获取banner图
-  apiActiveList({
+  apiBannerList({
     @required context,
     params
   }){
-    return HttpsResponse(context).post('/default/getArticleList');
+    return HttpsResponse(context).post('/banner?type=2');
   }
 
   /// 获取推荐歌单

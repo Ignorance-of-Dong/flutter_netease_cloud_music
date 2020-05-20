@@ -2,13 +2,15 @@
  * @Author: zhangzheng
  * @Date: 2020-05-08 17:22:12
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-18 16:18:54
+ * @LastEditTime: 2020-05-19 15:04:30
  * @Descripttion: 发现模块
  */
 import "package:flutter/material.dart";
 // import "package:cloudmusic/widgets/tabSwitching.dart";
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cloudmusic/utils/IconFont.dart';
+import 'package:provider/provider.dart';
+import 'package:cloudmusic/model/model.dart';
 
 class FindScreen extends StatefulWidget {
   @override
@@ -30,7 +32,7 @@ class _FindScreenState extends State<FindScreen> {
     },
     {
       "title": "排行榜",
-      "icon": IconFont.ranking1,
+      "icon": IconFont.rankingList2,
       "size": 30.0
     },
     {
@@ -40,12 +42,15 @@ class _FindScreenState extends State<FindScreen> {
     },
     {
       "title": "直播",
-      "icon": IconFont.liveBroadcast1,
-      "size": 30.0
+      "icon": IconFont.liveBroadcast,
+      "size": 33.0
     },
   ];
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
+      Provider.of<CounterNotifier>(context).getBannerList(context);
+    });
     imageList
     ..add(
       Container(
@@ -100,47 +105,123 @@ class _FindScreenState extends State<FindScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Scrollbar(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(0.0),
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 150,
-                child: Swiper(
-                  itemCount: 4,
-                  itemBuilder: _swiperBuilder,
-                  controller: SwiperController(),
+    width: MediaQuery.of(context).size.width,
+      child: ListView(
+        padding: EdgeInsets.all(0.0),
+        physics: BouncingScrollPhysics(),
+        children: <Widget>[
+          Container(
+            height: 150,
+            child: Swiper(
+              itemCount: 4,
+              itemBuilder: _bannerBuilder,
+              controller: SwiperController(),
+              scrollDirection: Axis.horizontal,
+              autoplay: true,
+              onTap: (index) => print('点击了第$index'),
+            ),
+          ),
+          Container(
+            height: 120.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: _navLinkBuilder(context)
+            ),
+          ),
+          Container(
+            height: 200.0,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 60.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin:EdgeInsets.only(left: 20.0),
+                        child: Text(
+                          "宝藏歌单，值得一听",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w800
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin:EdgeInsets.only(right: 20.0),
+                        child: Text("查看更多"),
+                      )
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  autoplay: true,
-                  onTap: (index) => print('点击了第$index'),
-                ),
-              ),
-              Container(
-                height: 120.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _navLinkBuilder(context)
-                ),
-              ),
-              Container(
-                height: 300.0,
-                color: Colors.yellow,
-              ),
-              Container(
-                height: 300.0,
-                color: Colors.yellow,
-              )
-            ],
-          ), 
-        ),
-      ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        height: MediaQuery.of(context).size.width / 3 - 20,
+                        color: Colors.red,
+                        margin: EdgeInsets.only(left: 10.0),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        height: MediaQuery.of(context).size.width / 3 - 20,
+                        margin: EdgeInsets.only(left: 10.0),
+                        color: Colors.red,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        height: MediaQuery.of(context).size.width / 3 - 20,
+                        color: Colors.red,
+                        margin: EdgeInsets.only(left: 10.0),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        height: MediaQuery.of(context).size.width / 3 - 20,
+                        color: Colors.red,
+                        margin: EdgeInsets.only(left: 10.0),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            height: 300.0,
+            color: Colors.blue,
+          ),
+          Container(
+            height: 300.0,
+            color: Colors.yellow,
+          )
+        ],
+      ), 
     );
   }
-  Widget _swiperBuilder(BuildContext context, int index) {
-    return (imageList[index]);
+  Widget _bannerBuilder(BuildContext context, int index) {
+    var bannerList = Provider.of<CounterNotifier>(context).bannerList;
+    List<Widget> view = List();
+    for(var i = 0; i < bannerList.length; i++){
+      view
+        ..add(
+          Container(
+            margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                image: NetworkImage(bannerList[i]['pic']),
+                fit: BoxFit.cover
+              )
+            )
+          )
+        );
+    }
+    print(view[index]);
+    return view[index] ?? Container();
   }
   List<Widget> _navLinkBuilder(BuildContext context) {
     List<Widget> view = List();

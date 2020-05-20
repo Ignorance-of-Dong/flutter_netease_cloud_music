@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 13:58:20
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-04-26 09:46:27
+ * @LastEditTime: 2020-05-19 12:06:06
  * @Descripttion: dio请求方法
  */
 import 'package:dio/dio.dart';
@@ -24,7 +24,7 @@ class HttpsResponse {
   // 或者通过传递一个 `options`来创建dio实例
   HttpsResponse(context) {
     options = BaseOptions(
-      baseUrl: "http://blogserver.ignorantscholar.cn/",
+      baseUrl: "http://musicapi.ignorantscholar.cn/",
       connectTimeout: 15000,
       receiveTimeout: 15000,
       responseType: ResponseType.plain,

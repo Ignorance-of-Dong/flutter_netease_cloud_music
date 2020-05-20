@@ -8,35 +8,35 @@
     {
       "icon_id": "753908",
       "name": "铃铛",
-      "font_class": "lingdang",
+      "font_class": "smallBell",
       "unicode": "e717",
       "unicode_decimal": 59159
     },
     {
       "icon_id": "1002349",
       "name": "扫一扫",
-      "font_class": "552dc065f0478",
+      "font_class": "scan",
       "unicode": "e613",
       "unicode_decimal": 58899
     },
     {
       "icon_id": "1629893",
       "name": "闹钟",
-      "font_class": "icon-test",
+      "font_class": "alarmClock",
       "unicode": "e614",
       "unicode_decimal": 58900
     },
     {
       "icon_id": "1771748",
       "name": "麦克",
-      "font_class": "mic",
+      "font_class": "microphone",
       "unicode": "e600",
       "unicode_decimal": 58880
     },
     {
       "icon_id": "1984397",
       "name": "换肤",
-      "font_class": "huanfu",
+      "font_class": "skinPeeler",
       "unicode": "e686",
       "unicode_decimal": 59014
     },
@@ -50,133 +50,140 @@
     {
       "icon_id": "3662545",
       "name": "票",
-      "font_class": "piao",
+      "font_class": "ticket",
       "unicode": "e75e",
       "unicode_decimal": 59230
     },
     {
       "icon_id": "4043377",
       "name": "闹钟",
-      "font_class": "clock",
+      "font_class": "alarmClock1",
       "unicode": "e601",
       "unicode_decimal": 58881
     },
     {
       "icon_id": "5133184",
       "name": "收 藏",
-      "font_class": "favorite",
+      "font_class": "collection",
       "unicode": "e61c",
       "unicode_decimal": 58908
     },
     {
       "icon_id": "6118272",
       "name": "附近",
-      "font_class": "fujin1",
+      "font_class": "nearby",
       "unicode": "e75b",
       "unicode_decimal": 59227
     },
     {
       "icon_id": "6997307",
       "name": "定时",
-      "font_class": "dingshi",
+      "font_class": "timing",
       "unicode": "e606",
       "unicode_decimal": 58886
     },
     {
+      "icon_id": "14778991",
+      "name": "铃铛",
+      "font_class": "smallBell1",
+      "unicode": "e7e6",
+      "unicode_decimal": 59366
+    },
+    {
       "icon_id": "9215864",
       "name": "信",
-      "font_class": "xin",
+      "font_class": "letter",
       "unicode": "e60a",
       "unicode_decimal": 58890
     },
     {
       "icon_id": "435934",
       "name": "排行榜",
-      "font_class": "paixingbang",
+      "font_class": "rankingList",
       "unicode": "e7bd",
       "unicode_decimal": 59325
     },
     {
       "icon_id": "821791",
       "name": "直播",
-      "font_class": "zhibo",
+      "font_class": "liveBroadcast",
       "unicode": "e727",
       "unicode_decimal": 59175
     },
     {
       "icon_id": "1956095",
       "name": "电台",
-      "font_class": "diantai",
+      "font_class": "radioStation",
       "unicode": "e65e",
       "unicode_decimal": 58974
     },
     {
       "icon_id": "2357757",
       "name": "排行榜",
-      "font_class": "paihangbang",
+      "font_class": "rankingList1",
       "unicode": "e609",
       "unicode_decimal": 58889
     },
     {
       "icon_id": "2529730",
       "name": "电台",
-      "font_class": "ziyuan",
+      "font_class": "radioStation1",
       "unicode": "e602",
       "unicode_decimal": 58882
     },
     {
       "icon_id": "3684227",
       "name": "电台",
-      "font_class": "diantai1",
+      "font_class": "radioStation2",
       "unicode": "e603",
       "unicode_decimal": 58883
     },
     {
       "icon_id": "4002523",
       "name": "排行榜",
-      "font_class": "paihangbangxuanzhong",
+      "font_class": "rankingList2",
       "unicode": "e7e5",
       "unicode_decimal": 59365
     },
     {
       "icon_id": "6525418",
       "name": "排行榜",
-      "font_class": "paihangbang1",
+      "font_class": "rankingList3",
       "unicode": "e605",
       "unicode_decimal": 58885
     },
     {
       "icon_id": "7059047",
       "name": "日历",
-      "font_class": "rili",
+      "font_class": "calendar",
       "unicode": "e607",
       "unicode_decimal": 58887
     },
     {
       "icon_id": "7202674",
       "name": "日历",
-      "font_class": "rili1",
+      "font_class": "calendar1",
       "unicode": "e62c",
       "unicode_decimal": 58924
     },
     {
       "icon_id": "10180793",
       "name": "歌单",
-      "font_class": "gedan",
+      "font_class": "songSheet",
       "unicode": "e608",
       "unicode_decimal": 58888
     },
     {
       "icon_id": "10510393",
       "name": "直播",
-      "font_class": "zhibo1",
+      "font_class": "liveBroadcast1",
       "unicode": "e60b",
       "unicode_decimal": 58891
     },
     {
       "icon_id": "11391498",
       "name": "歌单",
-      "font_class": "gedan1",
+      "font_class": "songSheet1",
       "unicode": "e636",
       "unicode_decimal": 58934
     }
