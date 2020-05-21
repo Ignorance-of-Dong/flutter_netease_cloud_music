@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 13:56:25
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-19 13:55:42
+ * @LastEditTime: 2020-05-21 11:18:53
  * @Descripttion: 
  */ 
 // import 'dart:async';
@@ -17,6 +17,20 @@ class NetWorkList{
     params
   }){
     return HttpsResponse(context).post('/banner?type=2');
+  }
+  /// 获取首页推荐歌单
+  apiPersonalizedSongList({
+    @required context,
+    params
+  }){
+    return HttpsResponse(context).post('/personalized?limit=${params['limit']}');
+  }
+  /// 获取排行榜分类歌单
+  apiTopList({
+    @required context,
+    params
+  }){
+    return HttpsResponse(context).post('/top/list?idx=${params['id']}');
   }
 
   /// 获取推荐歌单
