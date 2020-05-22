@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-05-08 17:22:12
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-21 18:49:50
+ * @LastEditTime: 2020-05-22 18:16:25
  * @Descripttion: 发现模块
  */
 import "package:flutter/material.dart";
@@ -19,6 +19,7 @@ class FindScreen extends StatefulWidget {
 
 class _FindScreenState extends State<FindScreen> {
   List<Widget> imageList = List();
+  List<Widget> rowColumnList = List();
   List navList = [
     {
       "title": "每日推荐",
@@ -48,16 +49,17 @@ class _FindScreenState extends State<FindScreen> {
   ];
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
-      Provider.of<CounterNotifier>(context).getBannerList(context);
-      Provider.of<CounterNotifier>(context).getRecommendedSongList(context, {"limit": 6});
-      Provider.of<CounterNotifier>(context).getTopList(context, {"id": 25});
+    WidgetsBinding.instance.addPostFrameCallback((callback) async{
+      await Provider.of<CounterNotifier>(context).getBannerList(context);
+      await Provider.of<CounterNotifier>(context).getRecommendedSongList(context, {"limit": 6});
+      await Provider.of<CounterNotifier>(context).getTopList(context, {"id": 25});
     });
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     List songList = Provider.of<CounterNotifier>(context).recommendedSongList;
+    List djList = Provider.of<CounterNotifier>(context).djList;
     return Container(
     width: MediaQuery.of(context).size.width,
       child: ListView(
@@ -154,11 +156,11 @@ class _FindScreenState extends State<FindScreen> {
                   child: Swiper(
                     itemWidth: MediaQuery.of(context).size.width,
                     itemHeight: 260.0,
-                    itemCount: 3,
-                    itemBuilder: _rowColumGrad,
+                    itemCount: djList.length > 1 ? djList.length : 3,
+                    itemBuilder: _rowColumnInd,
                     customLayoutOption: new CustomLayoutOption(
                         startIndex: -1,
-                        stateCount: 2
+                        stateCount: 3
                     ).addTranslate([
                         new Offset(-(MediaQuery.of(context).size.width), -0.0),
                         new Offset(0.0, 0.0),
@@ -181,92 +183,26 @@ class _FindScreenState extends State<FindScreen> {
       ), 
     );
   }
-  Widget _rowColumGrad(BuildContext context, int index) {
-    // var djList = Provider.of<CounterNotifier>(context).djList;
-    var djList = List();
-    List<Widget> view = List();
-
-    List<Widget> _childView(BuildContext context, djlists) {
-      List views = List();
-      for (var i = 0; i < djlists.length; i++) {
-        views..add(
-          Container(
-            height: 80.0,
-            color: Colors.white,
-            margin: EdgeInsets.only(top: 5.0),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: 75.0,
-                  height: 75.0,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: NetworkImage('http://p1.music.126.net/eBn9D-_0-w0MuoUJajHk0w==/109951165001935889.jpg'),
-                      fit: BoxFit.cover
-                    )
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 35.0,
-                          child: Text(
-                            "毛病毛病毛病毛病毛病毛病毛病毛病sdasdasdasdasd",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 20.0
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 20.0,
-                          child: Text(
-                            "毛病毛病毛病毛病毛病毛病毛病毛病sdasdasdasdasd",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 70.0,
-                  height: 80.0,
-                  padding: EdgeInsets.only(left: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.play_circle_filled
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      }
-      return view;
-    }
-
-    for(var i = 0; i < djList.length; i++){
-      view..add(
-        Container(
-          width: MediaQuery.of(context).size.width - 50,
-          margin: EdgeInsets.only(left: 10.0),
-          child: Container()
-        ),
-      );
-    }
-    return view.length > 1 ? view[index] : Container();
+  
+  Widget _rowColumnInd(BuildContext context, int index) {
+    List<Widget> dj = [
+      Container(
+        width: MediaQuery.of(context).size.width - 50,
+        margin: EdgeInsets.only(left: 10.0),
+      ),
+      Container(
+        width: MediaQuery.of(context).size.width - 50,
+        margin: EdgeInsets.only(left: 10.0),
+      ),
+      Container(
+        width: MediaQuery.of(context).size.width - 50,
+        margin: EdgeInsets.only(left: 10.0),
+      )
+    ];
+    List djList = Provider.of<CounterNotifier>(context).djList;
+    print(djList.length);
+    print(index);
+    return djList.length > 1 ? djList[index] : dj[index];
   }
   List<Widget> _songListBuilder(BuildContext context, songList) {
     List<Widget> view = List();
@@ -282,7 +218,6 @@ class _FindScreenState extends State<FindScreen> {
                 Container(
                   height: MediaQuery.of(context).size.width / 3 - 20,
                   decoration: BoxDecoration(
-                    color: Colors.red,
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                       image: NetworkImage(songList[i]['picUrl']),
@@ -318,23 +253,7 @@ class _FindScreenState extends State<FindScreen> {
         )
       )
     );
-    List<Widget> view = List();
-    for(var i = 0; i < bannerList.length; i++){
-      view
-        ..add(
-          Container(
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
-                image: NetworkImage(bannerList[i]['pic']),
-                fit: BoxFit.cover
-              )
-            )
-          )
-        );
-    }
-    return view.length > 1 ? view[index] : defaultTempalate;
+    return bannerList.length > 1 ? bannerList[index] : defaultTempalate;
   }
   List<Widget> _navLinkBuilder(BuildContext context) {
     List<Widget> view = List();

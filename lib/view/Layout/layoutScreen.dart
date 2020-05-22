@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-26 14:14:40
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-18 11:30:52
+ * @LastEditTime: 2020-05-22 18:21:24
  * @Descripttion: 首页布局 + 侧边栏
  */
 
@@ -99,7 +99,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
             },
           )
         ),
-        
       ),
       onWillPop: () async{
           // 点击返回键的操作

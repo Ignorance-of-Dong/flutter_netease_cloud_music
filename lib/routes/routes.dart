@@ -1,3 +1,10 @@
+/*
+ * @Author: zhangzheng
+ * @Date: 2020-04-17 14:07:32
+ * @LastEditors: zhangzheng
+ * @LastEditTime: 2020-05-22 18:47:27
+ * @Descripttion: 定义路由模块
+ */ 
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import './navigatorUtil.dart';
@@ -13,9 +20,6 @@ class Routes {
         Histroy().pop(context);
       }
     );
-    /// 定义路由模块
-    // router.define("/", handler: homeHandler);
-    // router.define('/detail', handler: bootHandler);
     router.define('/home', handler: homeHandler);
     router.define('/layout', handler: layoutHandler);
     router.define('/tel', handler: telHandler);
