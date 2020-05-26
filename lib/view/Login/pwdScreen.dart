@@ -2,13 +2,13 @@
  * @Author: zhangzheng
  * @Date: 2020-05-07 11:06:00
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-07 14:52:20
+ * @LastEditTime: 2020-05-25 14:07:40
  * @Descripttion: 密码校验模块
  */
 import 'package:cloudmusic/routes/navigatorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudmusic/widgets/inputForm.dart';
-import 'package:cloudmusic/utils/lcfarmSize.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloudmusic/widgets/gradientButton.dart';
 class PwdScreen extends StatefulWidget {
   final phoneMobile;
@@ -26,7 +26,7 @@ class _PwdScreenState extends State<PwdScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    LcfarmSize.getInstance().init(context);
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -45,7 +45,7 @@ class _PwdScreenState extends State<PwdScreen> {
       body: Column(
         children: <Widget>[
           Container(
-            height: 80.0,
+            height: ScreenUtil().setHeight(200),
             margin: EdgeInsets.only(top: 30.0),
             child: Center(
               child: Container(
@@ -67,14 +67,14 @@ class _PwdScreenState extends State<PwdScreen> {
             child: Stack(
               children: <Widget>[
                 Positioned(
-                  bottom: 50.0,
+                  bottom: ScreenUtil().setHeight(180),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: <Widget>[
                         Container(
                           width: MediaQuery.of(context).size.width * 0.9,
-                          height: 50.0,
+                          height: ScreenUtil().setHeight(180),
                           child: GradientButton(
                             context: context,
                             contextcolor: Colors.red,

@@ -2,14 +2,15 @@
  * @Author: zhangzheng
  * @Date: 2020-05-07 11:03:14
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-07 11:59:16
+ * @LastEditTime: 2020-05-25 14:07:27
  * @Descripttion: 手机号验证页面
  */
 import 'package:cloudmusic/routes/navigatorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudmusic/widgets/inputForm.dart';
-import 'package:cloudmusic/utils/lcfarmSize.dart';
 import 'package:cloudmusic/widgets/gradientButton.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class TelScreen extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _TelScreenState extends State<TelScreen> {
   RegExp mobile = new RegExp(r"(0|86|17951)?(13[0-9]|15[0-35-9]|17[0678]|18[0-9]|14[57])[0-9]{8}");
   @override
   Widget build(BuildContext context) {
-    LcfarmSize.getInstance().init(context);
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,18 +44,18 @@ class _TelScreenState extends State<TelScreen> {
         children: <Widget>[
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 60.0,
+            height: ScreenUtil().setHeight(200),
             padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0, 0),
             child: Text(
               "未注册手机号登陆后自动创建账号",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: LcfarmSize.dp(16.0),
+                fontSize: ScreenUtil().setSp(50),
               ),
             ),
           ),
           Container(
-            height: 80.0,
+            height: ScreenUtil().setHeight(300),
             child: Center(
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
@@ -78,14 +79,14 @@ class _TelScreenState extends State<TelScreen> {
             child: Stack(
               children: <Widget>[
                 Positioned(
-                  bottom: 50.0,
+                  bottom: ScreenUtil().setHeight(180),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: <Widget>[
                         Container(
                           width: MediaQuery.of(context).size.width * 0.9,
-                          height: 50.0,
+                          height: ScreenUtil().setHeight(180),
                           child: GradientButton(
                             context: context,
                             contextcolor: Colors.red,

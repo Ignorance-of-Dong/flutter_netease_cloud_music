@@ -2,12 +2,13 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 14:04:45
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-22 18:33:03
+ * @LastEditTime: 2020-05-25 15:54:23
  * @Descripttion: 状态管理模块 === > 兼职数据处理
  */
 
 import '../api/index.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 class CounterNotifier with ChangeNotifier {
 
   // =============>> 变量定义 <<============== //
@@ -39,11 +40,11 @@ class CounterNotifier with ChangeNotifier {
         Container(
           margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: NetworkImage(banners[i]['pic']),
-              fit: BoxFit.cover
-            )
+            borderRadius: BorderRadius.circular(8)
+          ),
+          child: CachedNetworkImage(
+            imageUrl: banners[i]['pic'],
+            fit: BoxFit.cover
           )
         )
       );

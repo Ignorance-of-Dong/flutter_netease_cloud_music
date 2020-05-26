@@ -2,15 +2,15 @@
  * @Author: zhangzheng
  * @Date: 2020-05-08 17:22:12
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-22 18:16:25
+ * @LastEditTime: 2020-05-25 15:13:12
  * @Descripttion: 发现模块
  */
 import "package:flutter/material.dart";
-// import "package:cloudmusic/widgets/tabSwitching.dart";
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cloudmusic/utils/IconFont.dart';
 import 'package:provider/provider.dart';
 import 'package:cloudmusic/model/model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FindScreen extends StatefulWidget {
   @override
@@ -24,27 +24,27 @@ class _FindScreenState extends State<FindScreen> {
     {
       "title": "每日推荐",
       "icon": IconFont.calendar1,
-      "size": 24.0
+      "size": 70.0
     },
     {
       "title": "歌单",
       "icon": IconFont.songSheet,
-      "size": 26.0
+      "size": 80.0
     },
     {
       "title": "排行榜",
       "icon": IconFont.rankingList1,
-      "size": 26.0
+      "size": 70.0
     },
     {
       "title": "电台",
       "icon": IconFont.radioStation1,
-      "size": 26.0
+      "size": 80.0
     },
     {
       "title": "直播",
       "icon": IconFont.liveBroadcast,
-      "size": 33.0
+      "size": 80.0
     },
   ];
   @override
@@ -58,8 +58,10 @@ class _FindScreenState extends State<FindScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     List songList = Provider.of<CounterNotifier>(context).recommendedSongList;
     List djList = Provider.of<CounterNotifier>(context).djList;
+    List<Widget> bannerList = Provider.of<CounterNotifier>(context).bannerList;
     return Container(
     width: MediaQuery.of(context).size.width,
       child: ListView(
@@ -67,30 +69,35 @@ class _FindScreenState extends State<FindScreen> {
         physics: BouncingScrollPhysics(),
         children: <Widget>[
           Container(
-            height: 150,
-            child: Swiper(
-              itemCount: 4,
-              itemBuilder: _bannerBuilder,
+            height: ScreenUtil().setHeight(500),
+            child: bannerList.length > 1 ? Swiper(
+              itemCount: bannerList.length,
+              outer: false,
+              itemBuilder: (BuildContext context, int index){
+                  return bannerList[index];
+              },
               controller: SwiperController(),
               scrollDirection: Axis.horizontal,
-              autoplay: true,
+              autoplay: bannerList.isNotEmpty,
+              loop: false,
               onTap: (index) => print('点击了第$index'),
-            ),
+            ): Container(),
           ),
           Container(
-            height: 120.0,
+            height: ScreenUtil().setHeight(450),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: _navLinkBuilder(context)
             ),
           ),
           Container(
-            height: 250.0,
+            height: ScreenUtil().setHeight(900),
             child: Column(
               children: <Widget>[
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 60.0,
+                  height: ScreenUtil().setHeight(170),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -99,7 +106,7 @@ class _FindScreenState extends State<FindScreen> {
                         child: Text(
                           "宝藏歌单，值得一听",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: ScreenUtil().setSp(60),
                             fontWeight: FontWeight.w800
                           ),
                         ),
@@ -125,12 +132,12 @@ class _FindScreenState extends State<FindScreen> {
             ),
           ),
           Container(
-            height: 350.0,
+            height: ScreenUtil().setHeight(1300),
             child: Column(
               children: <Widget>[
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 60.0,
+                  height: ScreenUtil().setHeight(170),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -139,7 +146,7 @@ class _FindScreenState extends State<FindScreen> {
                         child: Text(
                           "百听不厌的电音神曲",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: ScreenUtil().setSp(60),
                             fontWeight: FontWeight.w800
                           ),
                         ),
@@ -152,12 +159,14 @@ class _FindScreenState extends State<FindScreen> {
                   ),
                 ),
                 Container(
-                  height: 260,
-                  child: Swiper(
+                  height: ScreenUtil().setHeight(1100),
+                  child: djList.length > 1 ? Swiper(
                     itemWidth: MediaQuery.of(context).size.width,
-                    itemHeight: 260.0,
-                    itemCount: djList.length > 1 ? djList.length : 3,
-                    itemBuilder: _rowColumnInd,
+                    itemHeight: ScreenUtil().setHeight(1100),
+                    itemCount: djList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return djList[index];
+                    },
                     customLayoutOption: new CustomLayoutOption(
                         startIndex: -1,
                         stateCount: 3
@@ -170,13 +179,13 @@ class _FindScreenState extends State<FindScreen> {
                     scrollDirection: Axis.horizontal,
                     layout: SwiperLayout.CUSTOM,
                     onTap: (index) => print('点击了第$index'),
-                  ),
+                  ) : Container(),
                 ),
               ],
             ),
           ),
           Container(
-            height: 300.0,
+            height: ScreenUtil().setHeight(300),
             color: Colors.yellow,
           )
         ],
@@ -241,32 +250,19 @@ class _FindScreenState extends State<FindScreen> {
     }
     return view;
   }
-  Widget _bannerBuilder(BuildContext context, int index) {
-    var bannerList = Provider.of<CounterNotifier>(context).bannerList;
-    Widget defaultTempalate = Container(
-      margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        image: DecorationImage(
-          image: NetworkImage('http://p1.music.126.net/eBn9D-_0-w0MuoUJajHk0w==/109951165001935889.jpg'),
-          fit: BoxFit.cover
-        )
-      )
-    );
-    return bannerList.length > 1 ? bannerList[index] : defaultTempalate;
-  }
   List<Widget> _navLinkBuilder(BuildContext context) {
     List<Widget> view = List();
     for(var i = 0; i < navList.length; i++){
       view
         ..add(
           Container(
-            height: 80.0,
+            padding: EdgeInsets.only(top: 10.0),
+            height: ScreenUtil().setHeight(350),
             child: Column(
               children: <Widget>[
                 Container(
-                  width: 45.0,
-                  height: 45.0,
+                  width: ScreenUtil().setWidth(200),
+                  height: ScreenUtil().setHeight(200),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [Color.fromRGBO(236, 127, 127, 1), Colors.red]
@@ -275,7 +271,7 @@ class _FindScreenState extends State<FindScreen> {
                   ),
                   child: Icon(
                     navList[i]['icon'],
-                    size: navList[i]['size'],
+                    size: ScreenUtil().setSp(navList[i]['size']),
                     color: Colors.white,
                   ),
                 ),

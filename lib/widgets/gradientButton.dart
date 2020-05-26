@@ -2,11 +2,12 @@
  * @Author: zhangzheng
  * @Date: 2020-04-24 19:03:38
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-04-29 18:01:56
+ * @LastEditTime: 2020-05-25 12:01:41
  * @Descripttion: 水波纹按钮
  */
 import 'package:flutter/material.dart';
 import 'package:cloudmusic/utils/lcfarmSize.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /*
  * @params context 当前容器 【必传】
@@ -60,16 +61,17 @@ class _GradientButtonState extends State<GradientButton> {
     this.handelClick = widget.handelClick ?? this.handelClick;
     this.text = widget.text ?? this.text;
     this.textColor = widget.textColor ?? this.textColor;
-    this.fontSize = widget.fontSize ?? LcfarmSize.dp(15.0);
-    this.borderRadius = widget.borderRadius ?? LcfarmSize.dp(20.0);
+    this.fontSize = widget.fontSize ?? 60;
+    this.borderRadius = widget.borderRadius ?? 20;
     this.borderColor = widget.borderColor ?? this.borderColor;
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: borderColor, width: 1),
+        border: Border.all(color: borderColor, width: ScreenUtil().setWidth(3)),
         color: contextcolor,
         borderRadius: BorderRadius.circular(25)
       ),
@@ -81,10 +83,10 @@ class _GradientButtonState extends State<GradientButton> {
         onPressed: handelClick,
         child: Container(
           alignment: Alignment.center,
-          height: 30,
+          height: ScreenUtil().setHeight(100),
           child: Text(
             text,
-            style: TextStyle(color: textColor, fontSize: fontSize),
+            style: TextStyle(color: textColor, fontSize: ScreenUtil().setSp(fontSize)),
           ),
         ),
       ),

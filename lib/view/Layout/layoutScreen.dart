@@ -2,12 +2,11 @@
  * @Author: zhangzheng
  * @Date: 2020-04-26 14:14:40
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-22 18:21:24
+ * @LastEditTime: 2020-05-25 12:02:20
  * @Descripttion: 首页布局 + 侧边栏
  */
 
 import "package:flutter/material.dart";
-import 'package:cloudmusic/utils/lcfarmSize.dart';
 import 'package:toast/toast.dart';
 import '../sidebar/SidebarScreen.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +14,7 @@ import '../LayoutTabList/findScreen.dart';
 import '../LayoutTabList/userScreen.dart';
 import '../LayoutTabList/yunCunScreen.dart';
 import '../LayoutTabList/videoScreen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LayoutScreen extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    LcfarmSize.getInstance().init(context);
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     return WillPopScope(
       child: DefaultTabController(
@@ -57,10 +57,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 isScrollable: true,
                 indicatorColor: Colors.white,
                 indicator: const BoxDecoration(),
-                labelStyle: TextStyle(color: Colors.grey, fontSize: LcfarmSize.dp(19)),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: ScreenUtil().setSp(65)),
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
-                unselectedLabelStyle:TextStyle(color: Colors.red, fontSize: LcfarmSize.dp(14)),
+                unselectedLabelStyle:TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(55)),
                 tabs: <Widget>[
                   Text('我的'), Text('发现'), Text('云村'),Text('视频')
                 ],
@@ -69,11 +69,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
             actions: <Widget>[
               Container(
                 padding: EdgeInsets.only(right: 16),
-                child: Icon(Icons.search,size: 25.0,color: Colors.black),
+                child: Icon(Icons.search,size: ScreenUtil().setSp(70),color: Colors.black),
               ),
             ],
           ),
-
           drawer: SidebarScreen(),
           body: Builder(
             builder: (BuildContext context) {
@@ -121,7 +120,7 @@ Widget buildOpenDraw(BuildContext context) {
   return InkResponse(
     child: Icon(
       Icons.menu,
-      size: 25.0,
+      size: ScreenUtil().setSp(70),
       color: Colors.black,
     ),
     onTap: () {

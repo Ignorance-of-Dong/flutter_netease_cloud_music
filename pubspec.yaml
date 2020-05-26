@@ -36,10 +36,9 @@ dependencies:
 
   flutter_spinkit: ^4.0.0
 
-  flutter_markdown: ^0.3.0
+  flutter_screenutil: ^1.1.0
 
-  flutter_effects: 
-    git: https://github.com/HitenDev/flutter_effects.git
+  cached_network_image: ^2.2.0
 
   flare_flutter: 1.0.11
 

@@ -2,13 +2,14 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 14:15:35
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-07 11:11:04
+ * @LastEditTime: 2020-05-25 11:57:38
  * @Descripttion: App首页（登录 + 游客入口）
  */
 import 'package:cloudmusic/routes/navigatorUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:cloudmusic/utils/lcfarmSize.dart';
 import 'package:cloudmusic/widgets/gradientButton.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 1242, height: 2688, allowFontScaling: true);
     LcfarmSize.getInstance().init(context);
     return Scaffold(
       body: Column(
@@ -78,13 +80,13 @@ class _HomeScreenState extends State<HomeScreen>
                     bottom: 70.0,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 140.0,
+                      height: ScreenUtil().setHeight(500),
                       child: Column(
                         children: <Widget>[
                           Container(
                             margin: EdgeInsets.only(top: 10.0),
                             width: MediaQuery.of(context).size.width * 0.9,
-                            height: 50.0,
+                            height: ScreenUtil().setHeight(200),
                             child: GradientButton(
                               context: context,
                               handelClick: () {
@@ -101,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen>
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.9,
-                            height: 50.0,
+                            height: ScreenUtil().setHeight(200),
                             margin: EdgeInsets.only(top: 10.0),
                             child: GradientButton(
                               context: context,
