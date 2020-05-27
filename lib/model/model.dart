@@ -2,7 +2,7 @@
  * @Author: zhangzheng
  * @Date: 2020-04-17 14:04:45
  * @LastEditors: zhangzheng
- * @LastEditTime: 2020-05-25 15:54:23
+ * @LastEditTime: 2020-05-26 11:33:02
  * @Descripttion: 状态管理模块 === > 兼职数据处理
  */
 
@@ -44,6 +44,15 @@ class CounterNotifier with ChangeNotifier {
           ),
           child: CachedNetworkImage(
             imageUrl: banners[i]['pic'],
+            imageBuilder: (context, imageProvider) => Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.cover
+                ),
+                borderRadius: BorderRadius.circular(8),
+              )
+            ),
             fit: BoxFit.cover
           )
         )
@@ -104,13 +113,19 @@ class CounterNotifier with ChangeNotifier {
               Container(
                 width: 60.0,
                 height: 60.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: NetworkImage(djlists[i]["al"]["picUrl"]),
-                    fit: BoxFit.cover
-                  )
-                ),
+                child: CachedNetworkImage(
+                  imageUrl: djlists[i]["al"]["picUrl"],
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    )
+                  ),
+                  fit: BoxFit.cover
+                )
               ),
               Expanded(
                 flex: 1,
